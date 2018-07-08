@@ -23,10 +23,10 @@ public class CommandGatewayProducer {
     @Produces
     @Gateway
     public CommandGateway produce() {
-        commands.forEach(log::info);
-        handlers.forEach(log::info);
+        commands.forEach(log::debug);
+        handlers.forEach(log::debug);
         commands.forEach(this::addToRegistry);
-        log.info(gateway);
+        log.debug(gateway);
         return gateway;
     }
 
@@ -39,7 +39,7 @@ public class CommandGatewayProducer {
         for (Handler handler1 : handlers) {
             CommandHandler handler = (CommandHandler) handler1;
             if (matches(handler, command)) {
-                log.info(handler);
+                log.debug(handler);
                 return handler;
             }
         }
