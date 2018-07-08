@@ -5,7 +5,12 @@ import org.apache.log4j.Logger;
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
-
+/**
+ CDI producer for {@link CommandGateway}
+ Injects all instances of {@link Handler} and {@link Command} class implementations
+ Also verifies that each command has it's handler class
+ @author Sebastian Koltun
+ */
 public class CommandGatewayProducer {
     private static final Logger log = Logger.getLogger(CommandGatewayProducer.class);
     @Inject
