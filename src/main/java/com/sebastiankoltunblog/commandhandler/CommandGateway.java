@@ -33,13 +33,13 @@ public class CommandGateway {
     }
 
     void registerHandler(Class<? extends CommandRequest> commandClass, CommandHandler handler) {
-        log.info("Put in registry " + handler);
+        log.debug("Put in registry " + handler);
         registry.put(commandClass, handler);
     }
 
     private <R> CommandHandler<CommandRequest<R>, R> getHandler(CommandRequest<R> command) {
-        log.info("Find for " + command);
-        log.info(Arrays.toString(registry.entrySet().toArray()));
+        log.debug("Find for " + command);
+        log.debug(Arrays.toString(registry.entrySet().toArray()));
         CommandHandler handler = registry.get(command.getClass());
         validateConfiguration(command, handler);
         return handler;
